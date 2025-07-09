@@ -1,65 +1,66 @@
-Here is a README file for the `JSMReleases.py` script:
+Here’s a README file for your script:
 
 ---
 
-# JSMReleases.py
+# JSM Weekly Release Notes Extractor
 
-## Overview
-
-`JSMReleases.py` is a Python script that automates the extraction and comparison of Jira Service Management (JSM) weekly release notes from Atlassian's Confluence Cloud blog. It identifies and displays new JSM changes introduced in the latest weekly release compared to the previous week.
+This script fetches and compares the latest two Atlassian Cloud "Jira Service Management" (JSM) weekly release notes, then generates a user-friendly HTML report highlighting new changes for the current week.
 
 ## Features
 
-- Automatically creates and manages a Python virtual environment for dependencies.
-- Fetches the two most recent Atlassian Cloud weekly release blog posts.
-- Extracts and parses the "Jira Service Management" section from each post.
-- Compares the current and previous week's entries to highlight new changes.
-- Outputs new JSM changes with details, status labels, descriptions, and relevant links.
+- **Automatic virtual environment management:**  
+  The script creates and manages its own Python virtual environment (`jsm_venv`) in the script directory.
+- **Automatic dependency installation:**  
+  Installs `requests` and `beautifulsoup4` if not already present.
+- **No manual setup required:**  
+  Just run the script!
+- **HTML report:**  
+  Opens a styled HTML page in your browser showing new JSM changes for the current week.
 
 ## Requirements
 
-- Python 3.6 or higher
-- Internet connection (to fetch release notes and install dependencies)
+- Python 3.7 or newer
+- Internet connection
 
 ## Usage
 
-1. **Download the script**  
-   Save `JSMReleases.py` to your local machine.
+1. **Download the script** (e.g., `jsm_release_notes.py`).
+2. **Open a terminal** and navigate to the script’s directory.
+3. **Run the script:**
 
-2. **Run the script**  
-   Open a terminal and execute:
-   ```bash
-   python3 JSMReleases.py
+   ```sh
+   python3 jsm_release_notes.py
    ```
-   The script will:
-   - Create a virtual environment (`jsm_venv`) in the script's directory (if not already present).
-   - Install required packages (`requests`, `beautifulsoup4`) in the virtual environment.
-   - Fetch and compare the latest two JSM release notes.
-   - Print new JSM changes to the terminal.
 
-## How It Works
+   - On first run, the script will create a virtual environment and install dependencies.
+   - On subsequent runs, it will reuse the environment.
 
-- The script sets up a virtual environment and installs dependencies automatically.
-- It scrapes the Atlassian Cloud blog index for links to weekly release notes.
-- It parses the "Jira Service Management" section from each of the two most recent posts.
-- It compares the entries by name and lists any new changes found in the latest week.
+4. **View the results:**  
+   When the script finishes, your default web browser will open a new HTML page with the latest JSM changes.
 
-## Output
+## How it Works
 
-The script prints a list of new JSM changes, including:
-- Change name
-- Status labels (if any)
-- Description (with formatting)
-- Relevant links
-
-If no new changes are found, it will indicate so.
+- The script:
+  1. Creates a virtual environment (`jsm_venv`) if it doesn’t exist.
+  2. Installs required Python packages (`requests`, `beautifulsoup4`).
+  3. Downloads and parses the two most recent Atlassian Cloud change blog posts.
+  4. Extracts the "Jira Service Management" section from each.
+  5. Compares the entries and highlights new items for the current week.
+  6. Generates and opens an HTML report.
 
 ## Troubleshooting
 
-- If you encounter errors related to missing dependencies, delete the `jsm_venv` directory and rerun the script.
-- Ensure you have a working internet connection.
-- The script is designed to work on both Windows and Unix-like systems.
+- **If you see errors about missing Python or pip:**  
+  Make sure Python 3.7+ is installed and available in your PATH.
+- **If you see SSL or Tkinter warnings:**  
+  These are usually safe to ignore and do not affect the script’s output.
+- **If the browser does not open:**  
+  Check your system’s default browser settings.
+
+## Cleaning Up
+
+To remove the virtual environment and start fresh, simply delete the `jsm_venv` folder in the script’s directory.
 
 ## License
 
-This script is provided as-is, without warranty or guarantee of accuracy.
+MIT License
